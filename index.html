@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>List</title>
+<link rel="stylesheet" type="text/css" href="reset.css">
+<link rel="stylesheet" type="text/css" href="style.css"> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">Мій список завданнь</h2>
+  <input type="text" id="myInput" onkeyup='checkParams()' placeholder="Заголовок...">
+  <button onclick="addSpisok();" class="addBtn" id='submit' disabled>Додати</button>
+</div>
+
+<ul id="myUL">
+  <li>Купити фітнес браслет</li>
+  <li class="checked">Зателефонувати сестрі</li>
+  <li>Переглянути пошту</li>
+  <li>Купити фільтри</li>
+  <li>Прочитати книгу</li>
+  <li>Зателефонувати другу</li>
+</ul>
+
+<script>
+ //добавляємо елемент списку 
+ function addSpisok(){
+    var myUL=$('#myInput').val();
+    $('#myUL').append('<li>'+myUL+'</li>');
+	$('#myInput').val('');//очистили поле input
+	$("button").attr('disabled',true); //робиом кнопку не активною після першого натиску
+	}
+//робимо кнопку не активною
+	function checkParams() {
+    var checkMyInput = $('#myInput').val();
+    if(checkMyInput.length != 0) {
+        $('#submit').removeAttr('disabled');
+    } else {
+        $('#submit').attr('disabled', 'disabled');
+    }
+	}
+//виділення елементу списку при кліку на нього
+$("#myUL li").click(function(){
+$(this).toggleClass("checked");//зняти виділення при повторному кліку
+})
+//видалення елемента списка при кліку на нього
+function addCloseOnClick(messageElem) {
+
+  var close = messageElem.getElementsByTagName('close')[0]
+
+  close.onclick = function() {
+    messageElem.parentNode.removeChild(messageElem)
+  }
+
+}
+// добавляємо кнопку "закрити" і добавляємо її в кожний елемент списку
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// натиснути нопку "закрити"
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+
+</script>
+
+</body>
+</html>

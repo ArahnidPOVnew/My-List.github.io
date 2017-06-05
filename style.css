@@ -1,0 +1,116 @@
+
+body {
+  margin: 0;
+  min-width: 250px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /*зробити елементи списку не активними */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* всі непарні елементи списку  іншого кольору */
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Темніший колір фону при наведенні курсору миші */
+ul li:hover {
+  background: #ddd;
+}
+
+/* при натисненні on, змінити колір*/
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add і "checked" помітити при натисканні on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Стиль кнопки закриття */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+ 
+ 
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* стиль заголовка */
+.header {
+  background-color: #161CDC;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* стиль для input */
+input {
+  border: none;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 14px;
+}
+
+/* стиль "Add" кнопки */
+.addBtn {
+  padding:8.5px;
+  width: 25%;
+  background: #A7A4DC;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+
